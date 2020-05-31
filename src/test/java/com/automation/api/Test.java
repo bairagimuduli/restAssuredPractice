@@ -27,6 +27,7 @@ public class Test {
     @org.testng.annotations.Test
     public void testName1() throws JsonProcessingException {
         ApiProxyPaytmHelper proxyPaytmHelper=new ApiProxyPaytmHelper();
-        BaseHelper.writeToExcelSheet(proxyPaytmHelper.getMovieNameContentAvailable0());
+        BaseHelper baseHelper= new BaseHelper();
+        baseHelper.writeToExcelSheet(proxyPaytmHelper.getMovieNameContentAvailable0());
     }
 }
