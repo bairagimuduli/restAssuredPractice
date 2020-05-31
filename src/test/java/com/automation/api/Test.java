@@ -2,6 +2,8 @@ package com.automation.api;
 
 import com.automation.api.data_provider.UpcomingMoviesDP;
 import com.automation.api.pojo.UpcomingMovieDatum;
+import com.automation.api.service_helper.ApiProxyPaytmHelper;
+import com.automation.api.util.BaseHelper;
 import com.fasterxml.jackson.core.JsonProcessingException;
 
 import java.text.ParseException;
@@ -20,5 +22,11 @@ public class Test {
                 setValidatePaytmMovieCodeUnique(true).
                 build();
         upcomingMovieValidator.validate();
+    }
+
+    @org.testng.annotations.Test
+    public void testName1() throws JsonProcessingException {
+        ApiProxyPaytmHelper proxyPaytmHelper=new ApiProxyPaytmHelper();
+        BaseHelper.writeToExcelSheet(proxyPaytmHelper.getMovieNameContentAvailable0());
     }
 }
