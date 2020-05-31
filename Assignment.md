@@ -32,7 +32,6 @@ Test cases:
 9. 7th time user try to login from multiple devices and try to applies the promo simultaniously. Only once user should get a discount of Rs. 300
 10. User applied the promo and transaction got failed, that should not be considered as a promo code transaction. and user should able reapplies the code.
 11. user try to use the promo code for different types of bills, it should work for all if code is correct and limit is not crossed.
-12. 
 
 assumptions: 
 2. user 
