@@ -46,7 +46,7 @@ Test cases:
 
 > Write a program to find the first 100 Prime numbers. Write in either Java or Node.
 
-package com.automation.api;
+```package com.automation.api;
 
 import org.testng.annotations.Test;
 import java.util.ArrayList;
@@ -94,6 +94,7 @@ public class PrimeNo {
     }
 
 }
+```
 
 
 > Now write all possible test cases to test your program. (Manual test cases: covering both positive and negative scenarios)
