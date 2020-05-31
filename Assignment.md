@@ -1,9 +1,11 @@
 1. SQL:
 
 a>​ ​Write an SQL query to find nth largest salary along with employee name.
+
 Ans- SELECT e.name, s1.salary FROM Salary s1, Employee e WHERE N-1 = (SELECT COUNT(DISTINCT s1.salary) FROM Salary s2 WHERE s2.salary > s1.salary) and s1.EmpID = e.EmpID;
 
 b> Write a query to update salary of employees to 5000 whose age is 30+
+
 Ans- UPDATE Salary SET Salary = 5000 WHERE EmpID =( Select EmpID from Employee where (TIMESTAMPDIFF(YEAR, Date_of_birth, CURDATE()))>30);
 
 
