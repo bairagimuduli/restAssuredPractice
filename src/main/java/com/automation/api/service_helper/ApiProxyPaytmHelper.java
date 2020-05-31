@@ -1,5 +1,6 @@
 package com.automation.api.service_helper;
 
+import com.automation.api.pojo.UpcomingMovieDatum;
 import com.automation.api.pojo.UpcomingMovies;
 import com.automation.api.util.BaseHelper;
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -20,26 +21,28 @@ public class ApiProxyPaytmHelper {
         String path= "v2/movies/upcoming";
         Response response = baseHelper.get(baseUri, path);
         ObjectMapper objectMapper = new ObjectMapper();
-        UpcomingMovies upcomingMovies = objectMapper.readValue(response.getBody().toString(), UpcomingMovies.class);
+        UpcomingMovies upcomingMovies = objectMapper.readValue(response.prettyPrint(), UpcomingMovies.class);
         return upcomingMovies;
     }
 
     public List<String> getAllPaytmMovieCodes() throws JsonProcessingException {
         List<String> paytmMovieCodes = new ArrayList();
-        for (int i = 0; i < getUpcomingMovies().getUpcomingMovieData().size(); i++) {
-            paytmMovieCodes.add(getUpcomingMovies().getUpcomingMovieData().get(i).getPaytmMovieCode());
+        List<UpcomingMovieDatum> upcomingMovieData = getUpcomingMovies().getUpcomingMovieData();
+        for (int i = 0; i < upcomingMovieData.size(); i++) {
+            paytmMovieCodes.add(upcomingMovieData.get(i).getPaytmMovieCode());
         }
         return paytmMovieCodes;
     }
 
-    public boolean isPaytmMovieCodeUnique(String paytmMovieCode) throws JsonProcessingException {
-        int count= 0;
-        boolean isPaytmMovieCodeUnique = false;
-        for (int i = 0; i < getAllPaytmMovieCodes().size(); i++) {
-            if (getAllPaytmMovieCodes().get(i).equalsIgnoreCase(paytmMovieCode)){
-                count++;
+    public List<String> getMovieNameContentAvailable0() throws JsonProcessingException {
+        UpcomingMovies upcomingMovies = getUpcomingMovies();
+        List<String> movieNames = new ArrayList<>();
+        for (int i = 0; i < upcomingMovies.getUpcomingMovieData().size(); i++) {
+            if (upcomingMovies.getUpcomingMovieData().get(i).getIsContentAvailable()==0){
+                movieNames.add(upcomingMovies.getUpcomingMovieData().get(i).getMovieName());
             }
-        } if (count<2) isPaytmMovieCodeUnique=true;
-        return isPaytmMovieCodeUnique;
+        }
+        return movieNames;
     }
+
 }

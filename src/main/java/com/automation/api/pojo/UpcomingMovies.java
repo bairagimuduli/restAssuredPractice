@@ -4,6 +4,7 @@ package com.automation.api.pojo;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
 import com.fasterxml.jackson.annotation.JsonAnyGetter;
 import com.fasterxml.jackson.annotation.JsonAnySetter;
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -18,6 +19,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
     "languageScored"
 })
 public class UpcomingMovies {
+
 
     @JsonProperty("upcomingMovieData")
     private List<UpcomingMovieDatum> upcomingMovieData = null;
